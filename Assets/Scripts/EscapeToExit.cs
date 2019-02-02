@@ -9,7 +9,7 @@ public class EscapeToExit : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("SuperLabirynth");
         }
 	}
 }

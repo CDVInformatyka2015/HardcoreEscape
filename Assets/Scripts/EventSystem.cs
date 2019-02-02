@@ -50,7 +50,7 @@ public class EventSystem : MonoBehaviour {
     }
 	public void EscapeToGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SuperLabirynth");
     }
     public void EscapeToExit()
     {
