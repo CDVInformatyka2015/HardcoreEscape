@@ -1,39 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class AgentX : MonoBehaviour {
-
-    private NavMeshAgent agent;
+public class AgentX : MonoBehaviour
+{
+    private NavMeshAgent _agent;
     public Transform target;
-    public Component TextLife;
-    public Component SceneSwapper;
+    private GameObject _textLife;
+    [FormerlySerializedAs("SceneSwapper")] public Component sceneSwapper;
 
     // Use this for initialization
-    void Start () {
-        agent = transform.GetComponent<NavMeshAgent>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    private void Start()
     {
-        if (agent.isActiveAndEnabled && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-            if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
-                agent.SetDestination(target.position);
+        _textLife = GameObject.Find("Lifes");
+        _agent = transform.GetComponent<NavMeshAgent>();
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (!_agent.isActiveAndEnabled || _agent.pathPending ||
+            !(_agent.remainingDistance <= _agent.stoppingDistance)) return;
+        
+        if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
+            _agent.SetDestination(target.position);
         //agent.Warp(target.position);
     }
-    void OnTriggerEnter(Collider c)
+
+    private void OnTriggerEnter(Collider c)
     {
-        if (c.CompareTag("Player"))
+        if (!c.CompareTag("Player")) return;
+        
+        Debug.Log("Exec AgentCollinder");
+        try
         {
-            Debug.Log("Exec AgentCollinder");
-            // TODO
-            // Trzeba poprawić, bo nie działa na drugim respawnie.
-            this.TextLife.GetComponent<LifeScript>().DecrementLife("test");
-            this.SceneSwapper.GetComponent<SceneSwap>().LoadScene("SuperLabirynth");
+            _textLife.GetComponent<LifeScript>().DecrementLife("test");
         }
+        catch (MissingReferenceException e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        sceneSwapper.GetComponent<SceneSwap>().LoadScene("SuperLabirynth");
     }
 }

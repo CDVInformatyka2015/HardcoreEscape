@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeMapScript : MonoBehaviour {
@@ -19,6 +17,6 @@ public class ChangeMapScript : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         Debug.LogWarning("Jest w kolizji");
-        SceneManager.LoadScene(this.mapName);
+        SceneManager.LoadScene(mapName);
     }
 }

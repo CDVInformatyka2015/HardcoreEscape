@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EscapeToMenu : MonoBehaviour {
@@ -10,7 +8,7 @@ public class EscapeToMenu : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape) && this.isActive)
+        if (Input.GetKeyDown(KeyCode.Escape) && isActive)
         {
             if (!inMenu)
                 SceneManager.LoadScene("menu");

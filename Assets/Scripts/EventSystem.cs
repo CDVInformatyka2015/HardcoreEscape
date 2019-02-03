@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EventSystem : MonoBehaviour {
 
-    private bool pressKeyState = false;
+    private bool pressKeyState;
 
     void Update()
     {
-        if (this.pressKeyState)
+        if (pressKeyState)
         {
             foreach (KeyCode vKey in Enum.GetValues(typeof(KeyCode)))
             {
@@ -19,7 +17,7 @@ public class EventSystem : MonoBehaviour {
                 {
                     GameObject.Find("ButtonKey").GetComponentInChildren<Text>().text = "Klawisz:" + vKey;
                     PlayerPrefs.SetString("jumpKey", vKey.ToString());
-                    this.pressKeyState = false;
+                    pressKeyState = false;
                 }
             }
         }
@@ -33,7 +31,7 @@ public class EventSystem : MonoBehaviour {
         {
             if(PlayerPrefs.GetFloat("audio") == 0f)
             {
-                this.TurnOffSound();
+                TurnOffSound();
             }
         }
         if (PlayerPrefs.HasKey("jumpKey"))
@@ -74,16 +72,16 @@ public class EventSystem : MonoBehaviour {
         {
             if(PlayerPrefs.GetFloat("audio") == 0f)
             {
-                this.TurnOnSound();
+                TurnOnSound();
             }
             else
             {
-                this.TurnOffSound();
+                TurnOffSound();
             }
         }
         else
         {
-            this.TurnOffSound();
+            TurnOffSound();
         }
     }
 }

@@ -1,33 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MyLifes : MonoBehaviour
 {
-    private int lifes = 3;
-
-    void Start()
-    {
-        Debug.LogWarning(this.lifes);
-    }
+    private int _lifes = 3;
 
     public int GetLifes()
     {
-        return lifes;
+        return _lifes;
     }
 
     public bool RemoveLife()
     {
-        if (lifes > 0)
+        if (_lifes > 0)
         {
-            lifes--;
+            _lifes--;
             return true;
         }
+
         return false;
     }
 
     public void ResetMyLifes()
     {
-        lifes = 3;
+        _lifes = 3;
     }
 }

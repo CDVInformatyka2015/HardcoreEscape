@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     // Check to see if we're about to be destroyed.
-    private static bool m_ShuttingDown = false;
+    private static bool m_ShuttingDown;
     private static object m_Lock = new object();
     private static T m_Instance;
 
@@ -33,7 +34,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         // Need to create a new GameObject to attach the singleton to.
                         var singletonObject = new GameObject();
                         m_Instance = singletonObject.AddComponent<T>();
-                        singletonObject.name = typeof(T).ToString() + " (Singleton)";
+                        singletonObject.name = typeof(T) + " (Singleton)";
 
                         // Make instance persistent.
                         DontDestroyOnLoad(singletonObject);

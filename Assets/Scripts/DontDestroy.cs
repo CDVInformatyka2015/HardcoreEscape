@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
@@ -10,9 +8,9 @@ public class DontDestroy : MonoBehaviour
 
         if (objs.Length > 2)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 }
