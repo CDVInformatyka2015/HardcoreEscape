@@ -13,7 +13,7 @@ public class EventSystem : MonoBehaviour {
     {
         if (this.pressKeyState)
         {
-            foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
+            foreach (KeyCode vKey in Enum.GetValues(typeof(KeyCode)))
             {
                 if (Input.GetKey(vKey))
                 {
@@ -29,7 +29,6 @@ public class EventSystem : MonoBehaviour {
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Debug.Log("HELLO");
         if (PlayerPrefs.HasKey("audio"))
         {
             if(PlayerPrefs.GetFloat("audio") == 0f)
