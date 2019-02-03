@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Agent
   - Danger
+  - Life
   layers:
   - Default
   - TransparentFX

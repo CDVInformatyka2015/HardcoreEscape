@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class AgentX : MonoBehaviour {
 
     private NavMeshAgent agent;
     public Transform target;
+    public Component TextLife;
+    public Component SceneSwapper;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         agent = transform.GetComponent<NavMeshAgent>();
 	}
 	
@@ -26,8 +29,11 @@ public class AgentX : MonoBehaviour {
     {
         if (c.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            Debug.Log("GAME OVER");
+            Debug.Log("Exec AgentCollinder");
+            // TODO
+            // Trzeba poprawić, bo nie działa na drugim respawnie.
+            this.TextLife.GetComponent<LifeScript>().DecrementLife("test");
+            this.SceneSwapper.GetComponent<SceneSwap>().LoadScene("SuperLabirynth");
         }
     }
 }
