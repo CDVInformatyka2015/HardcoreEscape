@@ -2,9 +2,7 @@
 using UnityEngine.SceneManagement;
 
 public class KillCollider : MonoBehaviour {
-
-    private LifeScript life;
-
+   
 	// Use this for initialization
 	void Start () {
 	}

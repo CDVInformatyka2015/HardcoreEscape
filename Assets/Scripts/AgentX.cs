@@ -8,13 +8,10 @@ public class AgentX : MonoBehaviour
 {
     private NavMeshAgent _agent;
     public Transform target;
-    private GameObject _textLife;
-    [FormerlySerializedAs("SceneSwapper")] public Component sceneSwapper;
 
     // Use this for initialization
     private void Start()
     {
-        _textLife = GameObject.Find("Lifes");
         _agent = transform.GetComponent<NavMeshAgent>();
     }
 
@@ -26,7 +23,7 @@ public class AgentX : MonoBehaviour
         
         if (!_agent.hasPath || _agent.velocity.sqrMagnitude == 0f)
             _agent.SetDestination(target.position);
-        //agent.Warp(target.position);
+        _agent.SetDestination(target.position);
     }
 
     private void OnTriggerEnter(Collider c)
@@ -36,13 +33,12 @@ public class AgentX : MonoBehaviour
         Debug.Log("Exec AgentCollinder");
         try
         {
-            _textLife.GetComponent<LifeScript>().DecrementLife("test");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("SuperLabirynth");
         }
         catch (MissingReferenceException e)
         {
-            Console.WriteLine(e);
+            Debug.LogError(e);
             throw;
         }
-        sceneSwapper.GetComponent<SceneSwap>().LoadScene("SuperLabirynth");
     }
 }

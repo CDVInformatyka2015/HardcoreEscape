@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class ChangeMapScript : MonoBehaviour {
 
     public string mapName = "Menu";
+    public Component _player;
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +15,12 @@ public class ChangeMapScript : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        Debug.LogWarning("Jest w kolizji");
-        SceneManager.LoadScene(mapName);
+        if (collision.name == _player.name)
+        {
+            Debug.LogWarning("Jest w kolizji z: " + collision.name);
+            SceneManager.LoadScene(mapName);
+        }
     }
 }
