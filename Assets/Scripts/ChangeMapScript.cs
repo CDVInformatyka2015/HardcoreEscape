@@ -19,7 +19,6 @@ public class ChangeMapScript : MonoBehaviour {
     {
         if (collision.name == _player.name)
         {
-            Debug.LogWarning("Jest w kolizji z: " + collision.name);
             SceneManager.LoadScene(mapName);
         }
     }

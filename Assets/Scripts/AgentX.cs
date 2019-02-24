@@ -29,8 +29,6 @@ public class AgentX : MonoBehaviour
     private void OnTriggerEnter(Collider c)
     {
         if (!c.CompareTag("Player")) return;
-        
-        Debug.Log("Exec AgentCollinder");
         try
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("SuperLabirynth");

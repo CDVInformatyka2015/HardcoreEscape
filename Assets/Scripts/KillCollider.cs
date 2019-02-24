@@ -15,7 +15,8 @@ public class KillCollider : MonoBehaviour {
     {
         if (c.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Menu");
             Debug.Log("GAME OVER");
         }
     }

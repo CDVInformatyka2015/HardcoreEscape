@@ -11,7 +11,7 @@ public class EscapeToMenu : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape) && isActive)
         {
             if (!inMenu)
-                SceneManager.LoadScene("menu");
+                SceneManager.LoadScene("Menu");
             else
                 SceneManager.LoadScene("SuperLabirynth");
         }
